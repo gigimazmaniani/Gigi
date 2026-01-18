@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Pending{% endblock %}
+
+{% block content %}
+<h3 class="mb-3">Pending უნივერსიტეტები (Admin)</h3>
+
+{% if pendings|length == 0 %}
+  <div class="alert alert-success">Pending უნივერსიტეტები არ არის ✅</div>
+{% else %}
+  <div class="row">
+    {% for uni in pendings %}
+      <div class="col-md-6 mb-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="mb-2">{{ uni.name }}</h5>
+            <span class="badge badge-warning mb-2">Pending</span>
+
+            <p class="text-muted" style="white-space: pre-wrap;">{{ uni.description }}</p>
+
+            <div class="mb-3">
+              <a href="{{ uni.link }}" target="_blank" class="btn btn-outline-primary btn-sm">
+                ოფიციალური ლინკი
+              </a>
+            </div>
+
+            <form method="POST" action="{{ url_for('approve_university', uid=uni.id) }}" style="display:inline;">
+              <button type="submit" class="btn btn-success btn-sm">Approve</button>
+            </form>
+
+            <form method="POST" action="{{ url_for('reject_university', uid=uni.id) }}"
+                  style="display:inline;" onsubmit="return confirm('ნამდვილად გინდა უარყოფა/წაშლა?');">
+              <button type="submit" class="btn btn-danger btn-sm">Reject</button>
+            </form>
+
+            <a href="{{ url_for('university', uid=uni.id) }}" class="btn btn-link btn-sm">
+              ნახვა (Admin)
+            </a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+{% endblock %}

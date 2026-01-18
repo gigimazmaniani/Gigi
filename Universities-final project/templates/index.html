@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}მთავარი{% endblock %}
+
+{% block content %}
+
+<div class="hero mb-4">
+  <div class="hero-inner">
+    <h2 class="mb-2">„შეადარე, აირჩიე, გახდი საქართველოს მომავალი.“</h2>
+    <p class="text-muted mb-0">
+      დააჭირე უნივერსიტეტს დეტალებისთვის. დამატება შეუძლია ნებისმიერ მომხმარებელს.
+    </p>
+  </div>
+</div>
+
+<div class="row">
+  {% for uni in universities %}
+    <div class="col-md-4 mb-4">
+      <div class="card uni-card h-100"
+           onclick="window.location.href='{{ url_for('university', uid=uni.id) }}'">
+
+        {# ✅ სურათის სწორი ლოგიკა:
+           - თუ uni.image == 'default_uni.jpg' → static/images/default_uni.jpg (შენთან ასეა)
+           - სხვა შემთხვევაში → uploads
+        #}
+        {% if uni.image %}
+          {% if uni.image == 'default_uni.jpg' %}
+            <img src="{{ url_for('static', filename='images/default_uni.jpg') }}"
+                 class="card-img-top uni-img" alt="university">
+          {% else %}
+            <img src="{{ url_for('static', filename='images/uploads/' ~ uni.image) }}"
+                 class="card-img-top uni-img" alt="university">
+          {% endif %}
+        {% else %}
+          <img src="{{ url_for('static', filename='images/default_uni.jpg') }}"
+               class="card-img-top uni-img" alt="university">
+        {% endif %}
+
+        <div class="card-body text-center">
+          <h5 class="mb-0">{{ uni.name }}</h5>
+
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

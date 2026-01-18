@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Edit{% endblock %}
+
+{% block content %}
+<a href="{{ url_for('university', uid=uni.id) }}" class="btn btn-outline-secondary mb-3">← უკან</a>
+
+<div class="form-card shadow-sm">
+  <h3 class="mb-3">უნივერსიტეტის რედაქტირება (Admin)</h3>
+
+  <form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+
+    <div class="form-group">
+      {{ form.name.label }}
+      {{ form.name(class="form-control") }}
+      {% for e in form.name.errors %}<small class="text-danger">{{ e }}</small>{% endfor %}
+    </div>
+
+    <div class="form-group">
+      {{ form.description.label }}
+      {{ form.description(class="form-control", rows="5") }}
+      {% for e in form.description.errors %}<small class="text-danger">{{ e }}</small>{% endfor %}
+    </div>
+
+    <div class="form-group">
+      {{ form.link.label }}
+      {{ form.link(class="form-control") }}
+      {% for e in form.link.errors %}<small class="text-danger">{{ e }}</small>{% endfor %}
+    </div>
+
+    <div class="form-group">
+      {{ form.image.label }}
+      {{ form.image(class="form-control") }}
+      <small class="text-muted">თუ ახალ ფოტოს არ ატვირთავ, ძველი დარჩება.</small>
+      {% for e in form.image.errors %}<small class="text-danger">{{ e }}</small>{% endfor %}
+    </div>
+
+    {{ form.submit(class="btn btn-warning") }}
+  </form>
+</div>
+{% endblock %}

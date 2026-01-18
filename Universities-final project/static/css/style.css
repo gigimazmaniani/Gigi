@@ -1,0 +1,57 @@
+body { background: #f6f7fb; }
+
+.tbc-logo{
+  height: 40px;
+  width: auto;
+  display:block;
+}
+
+.hero{
+  background: linear-gradient(135deg, #ffffff, #f0f4ff);
+  border-radius: 16px;
+  padding: 22px;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.hero-inner h2{
+  font-weight: 800;
+}
+
+.uni-card{
+  cursor:pointer;
+  border-radius: 16px;
+  overflow:hidden;
+  transition: transform .18s ease, box-shadow .18s ease;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.uni-card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+}
+
+.uni-img{
+  height: 210px;
+  object-fit: cover;
+}
+
+.form-card{
+  background:#fff;
+  border-radius: 16px;
+  padding: 22px;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.uni-detail{
+  border-radius: 16px;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+.uni-detail-img{
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 14px;
+  object-fit: cover;
+}

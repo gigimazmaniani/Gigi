@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}დამატება{% endblock %}
+
+{% block content %}
+<div class="form-card shadow-sm">
+  <h3 class="mb-3">დაგვეხმარე უნივერსიტეტების დამატებაში</h3>
+  <p class="text-muted">
+    უნივერსიტეტი გამოჩნდება admin-ის დადასტურების შემდეგ.
+  </p>
+
+  <form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+
+    <div class="form-group">
+      {{ form.name.label }}
+      {{ form.name(class="form-control") }}
+      {% for e in form.name.errors %}<small class="text-danger">{{ e }}</small>{% endfor %}
+    </div>
+
+    <div class="form-group">
+      {{ form.description.label }}
+      {{ form.description(class="form-control", rows="5") }}
+      {% for e in form.description.errors %}<small class="text-danger">{{ e }}</small>{% endfor %}
+    </div>
+
+    <div class="form-group">
+      {{ form.link.label }}
+      {{ form.link(class="form-control") }}
+      {% for e in form.link.errors %}<small class="text-danger">{{ e }}</small>{% endfor %}
+    </div>
+
+    <div class="form-group">
+      {{ form.image.label }}
+      {{ form.image(class="form-control") }}
+      {% for e in form.image.errors %}<small class="text-danger">{{ e }}</small>{% endfor %}
+    </div>
+
+    {{ form.submit(class="btn btn-success") }}
+  </form>
+</div>
+{% endblock %}
