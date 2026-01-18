@@ -4,4 +4,5 @@ flask-wtf
 flask-login
 wtforms
 email-validator
-guniorn
+gunicorn
+
